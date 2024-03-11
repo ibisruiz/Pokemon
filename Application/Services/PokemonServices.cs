@@ -1,7 +1,6 @@
 ﻿using PokePoke.Core.Application.Interfaces.Repositories;
 using PokePoke.Core.Application.Interfaces.Services;
 using PokePoke.Core.Application.ViewModels.Pokemon;
-using PokePoke.Core.Application.ViewModels.PokemonTipo;
 using PokePoke.Core.Domain.Entities;
 
 namespace PokePoke.Core.Application.Services
@@ -34,12 +33,13 @@ namespace PokePoke.Core.Application.Services
             pokemonn.ImageUrl = vm.ImageUrl;
             pokemonn.RegionId = vm.RegionId;
 
-            var listado = new List<PokemonTipoViewModel>();
+            var resultado = new List<PokemonTipo>();
 
             foreach (var tipoIds in vm.TiposIds)
             {
-                listado.Add(new PokemonTipoViewModel() { TipoId = tipoIds });                
+                resultado.Add(new PokemonTipo() { TipoId = tipoIds });                
             }
+
             await pokemonRepository.AddAsync(pokemonn);
         }
     }
